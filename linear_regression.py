@@ -44,10 +44,13 @@ def gradient_descent(X: np.ndarray, y: np.ndarray,
         arr = np.zeros((2, m))
 
         for i in range(m):
-            arr[0, i] = (theta * X[i]) - y[i]  # difference between calculated and actual
-            arr[1, i] = (theta * X[i]) - y[i] * X[i]  # TODO: figure out what this is
+            # difference between calculated and actual
+            arr[0, i] = (theta * X[i]) - y[i]
+            # TODO: figure out what this is
+            arr[1, i] = (theta * X[i]) - y[i] * X[i]
 
-        theta -= alpha/m * sum(arr[0, :]) # TODO: figure out the purpose of the sum
+        # alpha * average error
+        theta -= alpha/m * sum(arr[0, :])
 
     return theta
 
@@ -65,4 +68,3 @@ def linear_regression(train_X: np.ndarray, train_y: np.ndarray, X: np.ndarray,
     plt.plot(X, prediction)
     plt.scatter(train_X, train_y)
     plt.show()
-
