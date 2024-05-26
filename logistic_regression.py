@@ -18,7 +18,7 @@ def compute_cost(X, y, theta):
     m = len(y)
     J = 0
     for i in range(m):
-        h = sigmoid(X[i])
+        h = sigmoid(X[i]*theta)
         J += cost(h, y[i])
 
     J /= m
@@ -27,4 +27,10 @@ def compute_cost(X, y, theta):
 def gradient_descent(X, y, alpha, inital_theta, iterations=200):
     theta = inital_theta
     m = len(y)
-    # TBD
+    for _ in range(iterations):
+        s = 0
+        for i in range(m):
+            s += (sigmoid(X[i]*theta)-y[i])*X[i]
+        theta -= alpha * s
+        theta -= alpha/m * np.transpose(X)*(sigmoid(X*theta)-y)
+    return sum(theta)

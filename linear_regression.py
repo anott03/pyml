@@ -45,9 +45,9 @@ def gradient_descent(X: np.ndarray, y: np.ndarray,
 
         for i in range(m):
             arr[0, i] = (theta * X[i]) - y[i] # difference between calculated and actual
-            arr[1, i] = (theta * X[i]) - y[i] * X[i] # TODO: figure out what this is
+            arr[1, i] = (theta * X[i]) - y[i] * X[i]
 
-        theta -= alpha/m * sum(arr[0, :]) # TODO: figure out the purpose of the sum
+        theta -= alpha/m * sum(arr[0, :])
 
     return theta
 
